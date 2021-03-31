@@ -1,0 +1,31 @@
+<launch>
+    <!-- robot name should probably be passed in case of multiple controller nodes running at the same time -->
+    <arg name="robot_name"/>
+    <node name="$(arg robot_name)_controller" pkg="hexapod_controller" type="hexapod_controller" output="screen"> 
+      <param name="robot_description" value="$(find hexapod_controller)/config/lily.json" type="string"/>
+      
+      <!-- remapping legs -->
+      <remap from="$(arg robot_name)_controller/j_coxa_L1"  to="cmd_pos/L1_J1_base" />
+      <remap from="$(arg robot_name)_controller/j_coxa_L2"  to="cmd_pos/L2_J1_base" />
+      <remap from="$(arg robot_name)_controller/j_coxa_L3"  to="cmd_pos/L3_J1_base" />
+      <remap from="$(arg robot_name)_controller/j_coxa_L4"  to="cmd_pos/L4_J1_base" />
+      <remap from="$(arg robot_name)_controller/j_coxa_L5"  to="cmd_pos/L5_J1_base" />
+      <remap from="$(arg robot_name)_controller/j_coxa_L6"  to="cmd_pos/L6_J1_base" />
+      <remap from="$(arg robot_name)_controller/j_femur_L1" to="cmd_pos/L1_J2_shoulder" />
+      <remap from="$(arg robot_name)_controller/j_femur_L2" to="cmd_pos/L2_J2_shoulder" />
+      <remap from="$(arg robot_name)_controller/j_femur_L3" to="cmd_pos/L3_J2_shoulder" />
+      <remap from="$(arg robot_name)_controller/j_femur_L4" to="cmd_pos/L4_J2_shoulder" />
+      <remap from="$(arg robot_name)_controller/j_femur_L5" to="cmd_pos/L5_J2_shoulder" />
+      <remap from="$(arg robot_name)_controller/j_femur_L6" to="cmd_pos/L6_J2_shoulder" />
+      <remap from="$(arg robot_name)_controller/j_tibia_L1" to="cmd_pos/L1_J3_elbow" />
+      <remap from="$(arg robot_name)_controller/j_tibia_L2" to="cmd_pos/L2_J3_elbow" />
+      <remap from="$(arg robot_name)_controller/j_tibia_L3" to="cmd_pos/L3_J3_elbow" />
+      <remap from="$(arg robot_name)_controller/j_tibia_L4" to="cmd_pos/L4_J3_elbow" />
+      <remap from="$(arg robot_name)_controller/j_tibia_L5" to="cmd_pos/L5_J3_elbow" />
+      <remap from="$(arg robot_name)_controller/j_tibia_L6" to="cmd_pos/L6_J3_elbow" />
+
+      <!-- remapping cmd vel -->
+      <!-- not needed -->
+      <remap from="/cmd_vel" to="cmd_vel" />
+    </node>
+</launch>
