@@ -116,7 +116,6 @@ int main(int argc, char *argv[]){
 
   //create the robot
   Robot robot(nhp, robot_description_filename);
-  robot.turn_on();
 
   //assign the default step height
   step_clearance = robot.default_step_height;
