@@ -84,7 +84,7 @@ void step_clearance_callback(const std_msgs::Float64::ConstPtr& msg){
   ROS_INFO("[hexapod_controller] step clearance set to %.2f", step_clearance);
 }/*//}*/
 
-//step height command callback//{
+//body clearance command callback//{
 void body_clearance_callback(const std_msgs::Float64::ConstPtr& msg){
   body_clearance = (msg->data > 0) ? msg->data : body_clearance;
   ROS_INFO("[hexapod_controller] body clearance set to %.2f", body_clearance);

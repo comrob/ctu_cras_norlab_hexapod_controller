@@ -30,7 +30,7 @@ Robot::Robot(ros::NodeHandle &nhp, const std::string robot_description_filename)
   Json::Value robot_description;
   std::ifstream robot_description_file(robot_description_filename, std::ifstream::binary);
   if (robot_description_file.fail()){
-     throw std::runtime_error("..");
+     throw std::runtime_error("Failed to read the robot configuration file");
   }
 
   //read the robot description
@@ -97,8 +97,8 @@ Robot::Robot(ros::NodeHandle &nhp, const std::string robot_description_filename)
   //assign half of the shortest distance as the maximum leg reach
   leg_reach = 0.5*leg_reach;
 
-  //assign half of the maax step height as default
-  default_step_height = 0.5*default_step_height;
+  //assign 20% of the max step height as default
+  default_step_height = 0.2*default_step_height;
 }
 
 //parse vector from json file//{
